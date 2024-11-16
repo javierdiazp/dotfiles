@@ -77,10 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    zsh-syntax-highlighting
-    fzf
-)
+plugins=(git fzf zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,11 +92,11 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -113,35 +110,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
-
-export DISABLE_SPRING=true # https://github.com/rails/rails/issues/38560
-
-# Scripts
-alias bastion="ruby ~/scripts/bastion.rb"
-alias acl="ruby ~/scripts/acl.rb"
-alias rc="ruby ~/scripts/rc.rb"
-alias rspec="bundle exec rspec"
-alias rubocop="bundle exec rubocop app spec --format simple"
-
-pj() {
-    (cd ~/RubymineProjects/pj-backend-scripts && bundle exec ruby bin/$1.rb ${@:2})
-}
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-
-pyenv() {
-    eval "$(command pyenv init -)"
-    pyenv "$@"
-}
-
-# Pip
-export PATH="$HOME/.local/bin:$PATH"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
