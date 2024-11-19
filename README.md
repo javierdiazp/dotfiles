@@ -6,6 +6,7 @@
 - Keyboard -> Modifier keys
 - Dock -> Auto hide and show, show suggested and recent, click wallpaper
 - Control center -> Never hide and show menu bar
+- Mission control -> Shortcut mouse button
 
 ## Environment
 
@@ -45,3 +46,15 @@ ln -s .dotfiles/.zprofile .zprofile
 rm -rf .p10k.zsh
 ln -s .dotfiles/.p10k.zsh .p10k.zsh
 ```
+
+
+### Setup GitHub
+
+```
+gh auth login
+cd .dotfiles
+git remote set-url origin git@github.com:javierdiazp/dotfiles.git
+```
+
+brew install koekeishiya/formulae/skhd
+skhd --start-service
